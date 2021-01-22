@@ -10,7 +10,7 @@ const smurfInitialInfo = {
     description: '',
 }
 
-const AddForm = ({addSmurfs}) => {
+const AddForm = ({addSmurfs, error}) => {
     const [smurfInfo, setSmurfInfo] = useState(smurfInitialInfo);
 
     const handleChange = (e) => {
@@ -42,7 +42,8 @@ const AddForm = ({addSmurfs}) => {
                     value={smurfInfo.description} id="description" />
                 </div>
 
-                <div data-testid="errorAlert" className="alert alert-danger" role="alert">Error: {this.props.error} </div>
+                {error !== '' ? <div data-testid="errorAlert" className="alert alert-danger" role="alert">Error: {error} </div>: ''}
+
                 <button type='submit'>Submit Smurf</button>
             </form>
         </section>);
@@ -50,7 +51,7 @@ const AddForm = ({addSmurfs}) => {
 
     const mapStateToProps = state => {
         return {
-            Error: state.errorText
+            error: state.errorText
         }
     }
 

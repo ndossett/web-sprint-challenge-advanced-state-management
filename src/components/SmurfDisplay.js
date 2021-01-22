@@ -12,7 +12,7 @@ const SmurfDisplay = ({fetchSmurfs, isLoading, smurfsArr}) => {
         <div> {
                 isLoading === true ? (<h1>Loading Smurfs...</h1>): 
                 (smurfsArr.map(smurf => {
-                    return < Smurf  smurf={smurf} />}
+                    return < Smurf smurf={smurf} />}
                 ))}
         </div>
     )
