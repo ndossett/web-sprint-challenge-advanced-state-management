@@ -19,10 +19,10 @@ export const fetchSmurfs = () => (dispatch) => {
     .catch(err => {
         console.log(err)
         dispatch({type: API_FAILURE, payload:err.message})
-    })
+})
 }
 
-export const addSmurfs = (newSmurf) =>
+    export const addSmurfs = (newSmurf) =>
 (dispatch) => {
     dispatch({type: POST_CHECK})
     axios
