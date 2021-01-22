@@ -30,24 +30,31 @@ const AddForm = ({addSmurfs}) => {
             <form onSubmit={onSubmit}>
                 <div className="form-group">
                     <label htmlFor="name">Name:</label><br/>
-                    <input onChange={handleChange} name="name" id="name" />
+                    <input onChange={handleChange} name="name" value={smurfInfo.name} id="name" />
                     <label htmlFor="position">Position:</label><br/>
-                    <input onChange={handleChange} name="position" id="position" />
+                    <input onChange={handleChange} name="position" 
+                    value={smurfInfo.position} id="position" />
                     <label htmlFor="nickname">Nickname:</label><br/>
-                    <input onChange={handleChange} name="nickname" id="nickname" />
+                    <input onChange={handleChange} name="nickname" 
+                    value={smurfInfo.nickname} id="nickname" />
                     <label htmlFor="description">Description:</label><br/>
-                    <input onChange={handleChange} name="description" id="description" />
+                    <input onChange={handleChange} name="description" 
+                    value={smurfInfo.description} id="description" />
                 </div>
 
-                <div data-testid="errorAlert" className="alert alert-danger" role="alert">Error: </div>
+                <div data-testid="errorAlert" className="alert alert-danger" role="alert">Error: {this.props.error} </div>
                 <button type='submit'>Submit Smurf</button>
             </form>
         </section>);
     }
 
+    const mapStateToProps = state => {
+        return {
+            Error: state.errorText
+        }
+    }
 
-
-export default connect(null, {addSmurfs})(AddForm);
+export default connect(mapStateToProps, {addSmurfs})(AddForm);
 
 
 //Task List:

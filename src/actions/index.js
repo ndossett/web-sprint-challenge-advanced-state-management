@@ -8,32 +8,35 @@ export const POST_FAILURE= 'POST_FAILURE';
 export const POST_SUCCESS= 'POST_SUCCESS';
 
 
-export const fetchSmurfs = () => (dispatch) => {
-   dispatch({type: API_START})
+export const fetchSmurfs = () => {
+    return (dispatch) => {
+   dispatch({type: API_START});
    axios
    .get('http://localhost:3333/smurfs')
-    .then(res => {
+    .then((res) => {
         dispatch({type: API_SUCCESS, payload:res.data})
-        console.log(res)
     })
-    .catch(err => {
-        console.log(err)
-        dispatch({type: API_FAILURE, payload:err.message})
-})
+    .catch((err) => {
+        dispatch({type: API_FAILURE, payload:err.message});
+    });
+ };
 }
 
-    export const addSmurfs = (newSmurf) =>
-(dispatch) => {
-    dispatch({type: POST_CHECK})
+export const addSmurfs = (smurfInfo) => {
+return (dispatch) => {
+    dispatch({type: POST_CHECK});
     axios
-    .post('http://localhost:3333/smurfs, newSmurf')
-    .then((res) => {
-        dispatch({ type: POST_SUCCESS, payload: res.data });
-      })
+        .post('http://localhost:3333/smurfs', smurfInfo)
+        .then((res) => {
+            console.log('action', res.data);
+            dispatch({ type: POST_SUCCESS, payload: res.data });
+        })
       .catch((err) => {
+        console.log('error', err.message)
         dispatch({ type: POST_FAILURE, payload: err.message });
       });
-}
+ };
+};
 
 
 //Task List:

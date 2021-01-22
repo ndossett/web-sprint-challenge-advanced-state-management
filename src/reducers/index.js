@@ -1,4 +1,4 @@
-import { API_START, API_SUCCESS, API_FAILURE, POST_CHECK, POST_SUCCESS, POST_FAILURE } from '../actions/index'
+import { API_START, API_SUCCESS, API_FAILURE, POST_CHECK, POST_SUCCESS, POST_FAILURE } from '../actions'
 
 export const initialState = {
     smurfsArr: [],
@@ -6,36 +6,36 @@ export const initialState = {
     errorText: ''
 }
 
-const reducer = (state=initialState, action)=>{
+const reducer = (state = initialState, action) => {
     switch(action.type){
-        case 'API_START':
-            return{
+        case (API_START):
+            return({
                 ...state, isLoading : true
-            }
-        case 'API_SUCCESS':
-            return{
+            })
+        case (API_SUCCESS):
+            return({
                 ...state, isLoading: false,
-                smurfsArr: action.payload
-            }
-        case 'API_FAILURE':
-            return{
+                smurfsArr: action.payload,
+            })
+        case (API_FAILURE):
+            return({
                 ...state, isLoading : false,
-                errorText: action.payload
-            }
-        case 'POST_CHECK':
-            return{
+                errorText: action.payload,
+            })
+        case (POST_CHECK):
+            return({
                 ...state, isLoading: true
-            }
-        case 'POST_SUCCESS':
-            return{
+            })
+        case (POST_SUCCESS):
+            return({
                 ...state, isLoading:false,
                 smurfsArr: action.payload
-            }
-        case 'POST_FAILURE':
-            return{
+            })
+        case (POST_FAILURE):
+            return({
                 ...state, isLoading:false,
                 errorText: action.payload
-            }
+            })
         default: 
             return state
     }
